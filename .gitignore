@@ -1,0 +1,74 @@
+# Rules specific to this project
+
+# Ignore directory of testimages.
+testimages/
+
+
+# Global stuff copied between projects. Should probably put this into a
+#  system-wide gitignore eventually.
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+
+# Compiled Dynamic libraries
+*.so
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+
+# Emacs autosave and backup files
+\#*#
+
+# Compiled python files
+*.py[cod]
+
+# Mac specific stuff
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+
+
+# Thumbnails
+._*
+
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
+
+# Eclim Emacs
+eclimd.log
+
+
+# Eclipse
+
+*.pydevproject
+.project
+.metadata
+bin/**
+tmp/**
+tmp/**/*
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.classpath
+.settings/
+.loadpath
+
+# External tool builders
+.externalToolBuilders/
+
+# Locally stored "Eclipse launch configurations"
+*.launch
+
+# CDT-specific
+.cproject
+
+# PDT-specific
+.buildpath
