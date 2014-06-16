@@ -1,5 +1,6 @@
 from PIL import Image
 from PIL.ExifTags import TAGS
+import exifread
 import datetime
 from os import rename, walk
 from os.path import join, split, splitext
@@ -7,7 +8,19 @@ from pprint import pprint
 import string
 
 
-def get_exif(fn):
+def get_exif_exifread(fn):
+  ret = {}
+  try:
+    f = open(fn, 'rb')
+    tags = exifread.process_file(f, details=False)
+    for k, v in tags.iteritems():
+      if k.startswith('EXIF '):
+        ret[k[5:]] = str(v)
+  except (IOError):
+    print 'Error getting EXIF for file', fn
+  return ret
+
+def get_exif_pil(fn):
     ret = {}
     try:
       i = Image.open(fn)
@@ -34,7 +47,7 @@ def exif_date_to_ts(exif_date):
 
 
 def get_creation_ts(fn):
-  exiftags = get_exif(fn)
+  exiftags = get_exif_exifread(fn)
   creation_ts = None
   if 'DateTimeOriginal' in exiftags:
     creation_ts = exif_date_to_ts(exiftags['DateTimeOriginal'])
