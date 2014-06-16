@@ -40,7 +40,7 @@ def clone_downscale_save(input_file, output_file, pixels=3000000,
   # Make sure output directory exists
   dirname, _basename = os.path.split(output_file)
   mkdir_p(dirname) # Noop if dir already exists
-  img.save(filename=output_file)
+  img.save(filename=output_def)
 
 
 def downscale_directory_tree(root, out_fmt, skip_non_jpeg=True, pixels=3000000,
